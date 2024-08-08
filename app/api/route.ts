@@ -2,6 +2,7 @@ import { Coinbase } from "@coinbase/coinbase-sdk";
 
 export async function POST(request: Request) {
   const { NAME, PRIVATE_KEY, WALLET_ID, WALLET_DATA } = process.env;
+
   // Check if the environment variables are set
   if (!NAME || !PRIVATE_KEY) {
     return Response.json(
@@ -19,11 +20,13 @@ export async function POST(request: Request) {
   // Create a new Coinbase instance
   const coinbase = new Coinbase({
     apiKeyName: NAME as string,
-    privateKey: PRIVATE_KEY as string,
+    privateKey: PRIVATE_KEY.replaceAll("\\n", "\n") as string,
+    debugging: true,
   });
 
   // Get the default user
   const user = await coinbase.getDefaultUser();
+
   let userWallet;
 
   // Get the seed from the environment
@@ -34,11 +37,11 @@ export async function POST(request: Request) {
   // Import the wallet if the seed is available
   if (seed) {
     // Import the wallet
-    userWallet = await user.importWallet({ seed, walletId });
+    userWallet = await user?.importWallet({ seed, walletId });
     await userWallet.listAddresses();
   } else {
     // Otherwise, create a new wallet
-    userWallet = await user.createWallet();
+    userWallet = await user?.createWallet();
     try {
       // Request funds from the faucet if it's available
       await userWallet?.faucet();

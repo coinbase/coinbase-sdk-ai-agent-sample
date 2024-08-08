@@ -19,13 +19,10 @@ export const images = [
 ];
 
 export const quotes = [
-    "Success is not final, failure is not fatal: It is the courage to continue that counts.",
     "Your time is limited, so don't waste it living someone else's life.",
     "The only limit to our realization of tomorrow is our doubts of today.",
     "Life is 10% what happens to us and 90% how we react to it.",
     "Act as if what you do makes a difference. It does.",
-    "To be yourself in a world that is constantly trying to make you something else is the greatest accomplishment.",
-    "What lies behind us and what lies before us are tiny matters compared to what lies within us.",
     "Keep your face always toward the sunshine—and shadows will fall behind you.",
     "The best way to predict the future is to create it.",
     "Don't watch the clock; do what it does. Keep going.",
@@ -34,7 +31,6 @@ export const quotes = [
     "Dream big and dare to fail.",
     "Success usually comes to those who are too busy to be looking for it.",
     "Don’t let yesterday take up too much of today.",
-    "You learn more from failure than from success. Don’t let it stop you. Failure builds character.",
     "The only way to do great work is to love what you do.",
     "The future belongs to those who believe in the beauty of their dreams.",
     "The only impossible journey is the one you never begin.",

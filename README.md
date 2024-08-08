@@ -31,7 +31,6 @@ yarn dev
 Open [http://localhost:3000](http://localhost:3000) with your browser to use the application.
 
 ## Learn More
-
 To learn more about the Coinbase SDK, take a look at the following resources:
 
 - [Coinbase CDP](https://portal.cdp.coinbase.com/access/api) - Coinbase Developer Portal.
