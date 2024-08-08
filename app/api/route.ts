@@ -12,6 +12,7 @@ export async function POST(request: Request) {
   }
 
   const body = await request.json();
+
   // Check if the address is provided
   if (!body?.address) {
     return Response.json({ message: "Address is required" }, { status: 400 });
