@@ -1,5 +1,7 @@
 # Coinbase-SDK Next.js Example - AI Feedback Tool 
-We created a simple AI feedback tool that uses the Coinbase SDK to create a wallet, fund the wallet, and send a transaction to a recipient.
+We created a simple AI feedback tool that uses the [Coinbase SDK](https://docs.cdp.coinbase.com/coinbase-sdk/docs/welcome) to create an [MPC wallet](https://docs.cdp.coinbase.com/mpc-wallet/docs/welcome), fund the wallet, and transfer eth on Base-Sepolia network to a recipient.
+
+![User journey](docs/images/ai-agent-flow.png)
 
 ## Getting Started
 To start, [create a CDP API Key](https://portal.cdp.coinbase.com/access/api). Then, create a `.env` file in the root directory with the following content:
@@ -41,3 +43,7 @@ To learn more about the Coinbase SDK, take a look at the following resources:
 The easiest way to deploy this app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+
+## References
+
+The images in the demo are sourced from [Unsplash](https://unsplash.com/).
