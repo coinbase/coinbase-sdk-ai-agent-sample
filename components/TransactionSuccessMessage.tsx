@@ -27,8 +27,8 @@ export const TransactionSuccessMessage = ({
           className="text-blue-700"
         >
           {data.transactionHash}
-        </Link>
-        . Thank you for participating!
+        </Link>{' '}
+        on Base-Sepolia Testnet. Thank you for participating!
       </div>
     </div>
   );

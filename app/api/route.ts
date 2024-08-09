@@ -22,7 +22,6 @@ export async function POST(request: Request) {
   const coinbase = new Coinbase({
     apiKeyName: NAME as string,
     privateKey: PRIVATE_KEY.replaceAll("\\n", "\n") as string,
-    debugging: true,
   });
 
   // Get the default user
@@ -43,20 +42,19 @@ export async function POST(request: Request) {
   } else {
     // Otherwise, create a new wallet
     userWallet = await user?.createWallet();
-    try {
-      // Request funds from the faucet if it's available
-      await userWallet?.faucet();
-    } catch (e) {
-      return Response.json(
-        { message: "Faucet request failed" },
-        { status: 500 }
-      );
-    }
+  }
+
+  try {
+    // Request funds from the faucet if it's available
+    await userWallet?.faucet();
+  } catch (e) {
+    // Log if the faucet is not available. 
+    console.log("Faucet is not available");
   }
 
   // Create a transfer to the destination address
   const transfer = await userWallet?.createTransfer({
-    amount: 0.000001,
+    amount: 0.00000001,
     assetId: "eth",
     destination: body.address,
   });

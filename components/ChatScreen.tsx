@@ -13,6 +13,7 @@ import { images, quotes } from "@/utils/data";
 import { LoadingIcon } from "./LoadingIcon";
 import Confetti from "react-confetti";
 import useWindowSize from "react-use/lib/useWindowSize";
+import Link from "next/link";
 
 type ChatEntry = {
   message: React.ReactNode;
@@ -58,7 +59,7 @@ export default function ChatScreen({
     addEntry(
       account.address ? (
         <SuccessMessage
-          message={`Thank you for your response! You will send your reward to ${account.address}.`}
+          message={`Thank you for your response! We will send your reward to ${account.address}.`}
         />
       ) : (
         <WalletConnectMessage message="Thank you for your response! Please connect your wallet to continue." />
@@ -79,7 +80,10 @@ export default function ChatScreen({
   }, []);
 
   useEffect(() => {
-    !isFetched && entries.length == 1 && account.address && initiateTransaction();
+    !isFetched &&
+      entries.length == 1 &&
+      account.address &&
+      initiateTransaction();
   }, [isFetched, entries.length, account.address, initiateTransaction]);
 
   useEffect(() => {
@@ -103,6 +107,18 @@ export default function ChatScreen({
         tweenDuration={2000}
         run={isSuccessRequest}
       />
+      <ChatEntry>
+        <div className="text-sm font-normal text-gray-900 dark:text-white">
+        Turbocharge your machine learning with AI wallets: now, you can automatically pay your users to help improve your models, powered by{" "}
+          <Link
+            href="https://docs.cdp.coinbase.com/mpc-wallet/docs/welcome"
+            target="_blank"
+            className="text-blue-700"
+          >
+            Coinbase MPC Wallets
+          </Link>.{' '}This sample app allows you to earn ETH on Base Sepolia in exchange for providing feedback to our AI agent. Try it out below!
+        </div>
+      </ChatEntry>
       {showImageRanking && (
         <ImageRanking onClick={onTaskComplete} images={selectedImages} />
       )}
