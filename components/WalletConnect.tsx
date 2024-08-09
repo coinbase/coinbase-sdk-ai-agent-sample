@@ -1,9 +1,8 @@
 import * as React from "react";
-import { Connector, useConnect } from "wagmi";
+import { useConnect } from "wagmi";
 
 export function WalletConnect() {
   const { connectors, connect } = useConnect();
-
   return connectors.map((connector) => (
     <button
       type="button"
@@ -11,7 +10,7 @@ export function WalletConnect() {
       key={connector.uid}
       onClick={() => connect({ connector })}
     >
-      {connector.name}
+      {connector.id == "coinbaseWalletSDK" ? "Coinbase Smart Wallet" : connector.name}
     </button>
   ));
 }
