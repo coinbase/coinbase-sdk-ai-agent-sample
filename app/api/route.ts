@@ -58,13 +58,14 @@ export async function POST(request: Request) {
   } else {
     // Otherwise, create a new wallet
     userWallet = await user?.createWallet();
-    try {
-      // Request funds from the faucet if it's available
-      await userWallet?.faucet();
-    } catch (e) {
-      // Log if the faucet is not available.
-      console.log("Faucet is not available");
-    }
+  }
+
+  try {
+    // Request funds from the faucet if it's available
+    await userWallet?.faucet();
+  } catch (e) {
+    // Log if the faucet is not available.
+    console.log("Faucet is not available");
   }
 
   // Create a transfer to the destination address

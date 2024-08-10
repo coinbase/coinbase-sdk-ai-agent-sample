@@ -14,7 +14,7 @@ export const ImageList = ({ images, onClick }: ImageListProps) => {
     onClick();
   };
   return (
-    <div className="flex flex-row gap-5 mt-2">
+    <div className="flex flex-col sm:flex-row items-center sm:gap-1 mt-2 overflow-auto">
       {images.map((image, idx) => (
         <Image
           onClick={() => handleSelect(image)}
