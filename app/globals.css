@@ -2,20 +2,4 @@
 @tailwind components;
 @tailwind utilities;
 
-body,html{
-    overflow: hidden;
-}
-
-.chat-entry:not(:first-child) {
-    animation: slideUp 0.5s ease-in-out;
-}
-
-@keyframes slideUp {
-    from {
-        transform: translateY(100vh);
-    }
-    to {
-        transform: translateY(0);
-    }
-}
   

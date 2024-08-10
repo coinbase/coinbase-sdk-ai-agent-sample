@@ -58,13 +58,14 @@ export async function POST(request: Request) {
   } else {
     // Otherwise, create a new wallet
     userWallet = await user?.createWallet();
-    try {
-      // Request funds from the faucet if it's available
-      await userWallet?.faucet();
-    } catch (e) {
-      // Log if the faucet is not available.
-      console.log("Faucet is not available");
-    }
+  }
+
+  try {
+    // Request funds from the faucet if it's available
+    await userWallet?.faucet();
+  } catch (e) {
+    // Log if the faucet is not available.
+    console.log("Faucet is not available");
   }
 
   // Create a transfer to the destination address
@@ -77,7 +78,7 @@ export async function POST(request: Request) {
   // Return the transaction hash and link
   return Response.json(
     {
-      transactionHash: transfer?.getTransactionHash(),
+      transactionHash: transfer?.getTransactionHash()?.substring(0, 10),
       transactionLink: transfer?.getTransactionLink(),
     },
     { status: 200 }

@@ -2,7 +2,7 @@ import { ChatEntry } from "@/components/ChatEntry";
 import { ImageRanking } from "@/components/ImageRanking";
 import { QuoteRanking } from "@/components/QuoteRanking";
 import { useQuery } from "@tanstack/react-query";
-import { useCallback, useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { useAccount } from "wagmi";
 import { SuccessMessage } from "./SuccessMessage";
 import { WalletConnectMessage } from "./WalletConnectMessage";
@@ -39,6 +39,14 @@ export default function ChatScreen({
   const [entries, setEntries] = useState<ChatEntry>([]);
   const [selectedImages] = useState<string[]>(getRandomItems(images));
   const [selectedQuotes] = useState<string[]>(getRandomItems(quotes));
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    // Scroll to the bottom of the container whenever items change
+    if (containerRef.current) {
+      containerRef.current.scrollTop = containerRef.current.scrollHeight;
+    }
+  }, [entries]);
 
   const addEntry = useCallback(
     (message: any, removeLast = false) => {
@@ -59,7 +67,7 @@ export default function ChatScreen({
     addEntry(
       account.address ? (
         <SuccessMessage
-          message={`Thank you for your response! We will send your reward to ${account.address}.`}
+          message={`Thank you for your response! We will send your reward to ${account.address.substring(0, 10)}...`}
         />
       ) : (
         <WalletConnectMessage message="Thank you for your response! Please connect your wallet to continue." />
@@ -100,34 +108,39 @@ export default function ChatScreen({
   }, [isFetched, data]);
 
   return (
-    <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8 mt-7 flex flex-col">
-      <Confetti
-        width={width}
-        height={height}
-        tweenDuration={2000}
-        run={isSuccessRequest}
-      />
-      <ChatEntry>
-        <div className="text-sm font-normal text-gray-900 dark:text-white">
-        Turbocharge your machine learning with AI wallets: now, you can automatically pay your users to help improve your models, powered by{" "}
-          <Link
-            href="https://docs.cdp.coinbase.com/mpc-wallet/docs/welcome"
-            target="_blank"
-            className="text-blue-700"
-          >
-            Coinbase MPC Wallets
-          </Link>.{' '}This sample app allows you to earn ETH on Base Sepolia in exchange for providing feedback to our AI agent. Try it out below!
-        </div>
-      </ChatEntry>
-      {showImageRanking && (
-        <ImageRanking onClick={onTaskComplete} images={selectedImages} />
-      )}
-      {!showImageRanking && (
-        <QuoteRanking onClick={onTaskComplete} quotes={selectedQuotes} />
-      )}
-      {entries.map((entry: any, idx: number) => (
-        <ChatEntry key={`entry-${idx}`} message={entry.message} />
-      ))}
+    <div ref={containerRef} className="overflow-y-auto max-h-screen">
+      <div className=" pb-10 mx-auto max-w-7xl px-2 sm:px-6 lg:px-8 mt-7 flex flex-col">
+        <Confetti
+          width={width}
+          height={height}
+          tweenDuration={2000}
+          run={isSuccessRequest}
+        />
+        <ChatEntry>
+          <div className="text-sm font-normal text-gray-900 dark:text-white">
+            Turbocharge your machine learning with AI wallets: now, you can
+            automatically pay your users to help improve your models, powered by{" "}
+            <Link
+              href="https://docs.cdp.coinbase.com/mpc-wallet/docs/welcome"
+              target="_blank"
+              className="text-blue-700"
+            >
+              Coinbase MPC Wallets
+            </Link>
+            . This sample app allows you to earn ETH on Base Sepolia in exchange
+            for providing feedback to our AI agent. Try it out below!
+          </div>
+        </ChatEntry>
+        {showImageRanking && (
+          <ImageRanking onClick={onTaskComplete} images={selectedImages} />
+        )}
+        {!showImageRanking && (
+          <QuoteRanking onClick={onTaskComplete} quotes={selectedQuotes} />
+        )}
+        {entries.map((entry: any, idx: number) => (
+          <ChatEntry key={`entry-${idx}`} message={entry.message} />
+        ))}
+      </div>
     </div>
   );
 }

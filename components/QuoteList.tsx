@@ -14,7 +14,7 @@ export const QuoteList = ({ quotes, onClick }: QuoteListProps) => {
   };
 
   return (
-    <div className="text-gray-900 bg-white border border-gray-200 rounded-lg dark:bg-gray-700 dark:border-gray-600 dark:text-white">
+    <div className="text-gray-900 bg-white border border-gray-200 rounded-lg">
       {quotes.map((quote, idx) => (
         <button
           onClick={() => handleSelect(quote)}
