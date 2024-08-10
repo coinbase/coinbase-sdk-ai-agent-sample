@@ -9,11 +9,10 @@ To start, [create a CDP API Key](https://portal.cdp.coinbase.com/access/api). Th
 ```text
 NAME="YOUR_API_KEY_NAME"
 PRIVATE_KEY="YOUR_API_KEY_PRIVATE"
-WALLET_ID="YOUR_WALLET_ID"
 WALLET_DATA={ "WALLET_ID": { "seed": "", "encrypted": false, "authTag": "", "iv": "" } }
 ```
 
-`WALLET_DATA` and `WALLET_ID` are optional. If you don't have a wallet, you can remove the `WALLET_ID` and `WALLET_DATA` fields. 
+`WALLET_DATA` is optional. If you don't have a wallet, you can remove the `WALLET_DATA` field. 
 If you have a wallet, make sure the wallet you are using is funded before running the application.
 
 Install the dependencies:
