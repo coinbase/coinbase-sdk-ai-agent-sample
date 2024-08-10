@@ -1,7 +1,8 @@
+import { getRandomItems } from "@/utils/random";
 import { Coinbase } from "@coinbase/coinbase-sdk";
 
 export async function POST(request: Request) {
-  const { NAME, PRIVATE_KEY, WALLET_ID, WALLET_DATA } = process.env;
+  const { NAME, PRIVATE_KEY, WALLET_DATA } = process.env;
 
   // Check if the environment variables are set
   if (!NAME || !PRIVATE_KEY) {
@@ -29,27 +30,41 @@ export async function POST(request: Request) {
 
   let userWallet;
 
-  // Get the seed from the environment
-  const seedFile = JSON.parse(WALLET_DATA || "{}");
-  const walletId = WALLET_ID as string;
-  const seed = seedFile[walletId]?.seed;
 
-  // Import the wallet if the seed is available
-  if (seed) {
-    // Import the wallet
-    userWallet = await user?.importWallet({ seed, walletId });
-    await userWallet.listAddresses();
+  // Check if the wallet data is provided
+  if (WALLET_DATA && WALLET_DATA?.length > 0) {
+    try {
+      // Parse the wallet data
+      const seedFile = JSON.parse(WALLET_DATA || "{}");
+      
+      // Get the wallet ids
+      const walletIds = Object.keys(seedFile);
+
+      // get the random wallet id
+      const walletId = getRandomItems(walletIds, 1)[0];
+
+      // Get the seed of the wallet
+      const seed = seedFile[walletId]?.seed;
+
+      // Import the wallet
+      userWallet = await user?.importWallet({ seed, walletId });
+      await userWallet.listAddresses();
+    } catch (e) {
+      return Response.json(
+        { message: "Failed to import wallet" },
+        { status: 500 }
+      );
+    }
   } else {
     // Otherwise, create a new wallet
     userWallet = await user?.createWallet();
-  }
-
-  try {
-    // Request funds from the faucet if it's available
-    await userWallet?.faucet();
-  } catch (e) {
-    // Log if the faucet is not available. 
-    console.log("Faucet is not available");
+    try {
+      // Request funds from the faucet if it's available
+      await userWallet?.faucet();
+    } catch (e) {
+      // Log if the faucet is not available.
+      console.log("Faucet is not available");
+    }
   }
 
   // Create a transfer to the destination address
