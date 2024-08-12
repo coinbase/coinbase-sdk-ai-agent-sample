@@ -30,13 +30,12 @@ export async function POST(request: Request) {
 
   let userWallet;
 
-
   // Check if the wallet data is provided
   if (WALLET_DATA && WALLET_DATA?.length > 0) {
     try {
       // Parse the wallet data
       const seedFile = JSON.parse(WALLET_DATA || "{}");
-      
+
       // Get the wallet ids
       const walletIds = Object.keys(seedFile);
 
@@ -58,14 +57,13 @@ export async function POST(request: Request) {
   } else {
     // Otherwise, create a new wallet
     userWallet = await user?.createWallet();
-  }
-
-  try {
-    // Request funds from the faucet if it's available
-    await userWallet?.faucet();
-  } catch (e) {
-    // Log if the faucet is not available.
-    console.log("Faucet is not available");
+    try {
+      // Request funds from the faucet if it's available
+      await userWallet?.faucet();
+    } catch (e) {
+      // Log if the faucet is not available.
+      console.log("Faucet is not available");
+    }
   }
 
   // Create a transfer to the destination address
@@ -86,3 +84,4 @@ export async function POST(request: Request) {
 }
 
 export const dynamic = "force-dynamic";
+export const maxDuration = 30;
