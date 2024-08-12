@@ -1,5 +1,8 @@
-# Coinbase-SDK Next.js Example - AI Feedback Tool 
-We created a simple AI feedback tool that uses the [Coinbase SDK](https://docs.cdp.coinbase.com/coinbase-sdk/docs/welcome) to create an [MPC wallet](https://docs.cdp.coinbase.com/mpc-wallet/docs/welcome), fund the wallet, and transfer eth on Base-Sepolia network to a recipient.
+# Coinbase-SDK - AI Feedback Tool 
+
+AI Feedback tool is a simple application built with [Coinbase SDK](https://docs.cdp.coinbase.com/coinbase-sdk/docs/welcome). The application shows how to create an [MPC wallet](https://docs.cdp.coinbase.com/mpc-wallet/docs/welcome), fund the wallet, and transfer eth on Base-Sepolia network to a recipient.
+
+[Demo](docs/videos/aiwallet-demo.mp4)
 
 ![User journey](docs/images/ai-agent-flow.png)
 
@@ -39,9 +42,8 @@ To learn more about the Coinbase SDK, take a look at the following resources:
 
 ## Deploy on Vercel
 
-The easiest way to deploy this app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+The easiest way to deploy this app is to use Vercel. Click the button below to deploy your own copy of the AI Feedback tool:
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fcoinbase%2Fcoinbase-sdk-ai-agent-sample&env=PRIVATE_KEY,NAME&envDescription=PRIVATE_KEY%20and%20NAME%20are%20the%20API%20key%20and%20name%20of%20the%20key%20you%20download%20from%20Coinbase%20Developer%20Platform%20portal.&envLink=https%3A%2F%2Fdocs.cdp.coinbase.com%2Fdeveloper-platform%2Fdocs%2Fcdp-keys&project-name=ai-wallet-coinbase-sdk&repository-name=ai-wallet-coinbase-sdk)
 
 ## References
 
