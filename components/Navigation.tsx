@@ -53,9 +53,7 @@ export const Navigation = () => {
               <div>
                 <button style={{ margin: '10px' }}></button>
               </div>
-              <a href="[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fcoinbase%2Fcoinbase-sdk-ai-agent-sample&env=PRIVATE_KEY,NAME&envDescription=PRIVATE_KEY%20and%20NAME%20are%20the%20API%20key%20and%20name%20of%20the%20key%20you%20download%20from%20Coinbase%20Developer%20Platform%20portal.&envLink=https%3A%2F%2Fdocs.cdp.coinbase.com%2Fdeveloper-platform%2Fdocs%2Fcdp-keys&project-name=ai-wallet-coinbase-sdk&repository-name=ai-wallet-coinbase-sdk)">
-                <img src="https://vercel.com/button" alt="Deploy with Vercel" />
-              </a>
+              <a href="https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fcoinbase%2Fcoinbase-sdk-ai-agent-sample&env=PRIVATE_KEY,NAME&envDescription=PRIVATE_KEY%20and%20NAME%20are%20the%20API%20key%20and%20name%20of%20the%20key%20you%20download%20from%20Coinbase%20Developer%20Platform%20portal.&envLink=https%3A%2F%2Fdocs.cdp.coinbase.com%2Fdeveloper-platform%2Fdocs%2Fcdp-keys&project-name=ai-wallet-coinbase-sdk&repository-name=ai-wallet-coinbase-sdk"><img src="https://vercel.com/button" alt="Deploy with Vercel"/></a>
             </div>
           </div>
         </div>
