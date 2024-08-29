@@ -1,24 +1,29 @@
-# Coinbase-SDK - AI Feedback Tool 
+# Coinbase-SDK - Onchain Machine Learning
 
-AI Feedback tool is a simple application built with [Coinbase SDK](https://docs.cdp.coinbase.com/coinbase-sdk/docs/welcome). The application shows how to create an [MPC wallet](https://docs.cdp.coinbase.com/mpc-wallet/docs/welcome), fund the wallet, and transfer eth on Base-Sepolia network to a recipient.
+The Onchain Machine Learning template provides a simple app for Reinforcement Learning from Human Feedback
+using the [CDP SDK](https://docs.cdp.coinbase.com/cdp-sdk/docs/welcome).
+The application shows how to create an [MPC wallet](https://docs.cdp.coinbase.com/mpc-wallet/docs/welcome), fund the wallet,
+and Base Sepolia to a recipient who controls a [Coinbase Smart Wallet](https://www.smartwallet.dev/why).
 
 <p align="center">
     <video src="https://github.com/user-attachments/assets/fd9969e9-b389-4552-bb0b-46d6e9586e71" width="352" height="720"></video>
 </p>
 
 ## Getting Started
-To start, [create a CDP API Key](https://portal.cdp.coinbase.com/access/api). Then, create a `.env` file in the root directory with the following content:
+
+To start, [create a CDP API Key](https://portal.cdp.coinbase.com/access/api).
+
+Then, set the following environment variables - for example, within a `.env` file, or by using
+[Replit Secret Manager](https://docs.replit.com/replit-workspace/workspace-features/secrets)
+(if you are accessing this template from Replit).
 
 ```text
-NAME="YOUR_API_KEY_NAME"
-PRIVATE_KEY="YOUR_API_KEY_PRIVATE"
-WALLET_DATA={ "WALLET_ID": { "seed": "", "encrypted": false, "authTag": "", "iv": "" } }
+API_KEY_NAME="YOUR_API_KEY_NAME"
+API_KEY_PRIVATE_KEY="YOUR_API_KEY_PRIVATE"
 ```
 
-`WALLET_DATA` is optional. If you don't have a wallet, you can remove the `WALLET_DATA` field. 
-If you have a wallet, make sure the wallet you are using is funded before running the application.
-
 Install the dependencies:
+
 ```bash
 npm install
 # or
@@ -26,6 +31,7 @@ yarn
 ```
 
 Then, run the development server:
+
 ```bash
 npm run dev
 # or
@@ -35,17 +41,18 @@ yarn dev
 Open [http://localhost:3000](http://localhost:3000) with your browser to use the application.
 
 ## Learn More
-To learn more about the Coinbase SDK, take a look at the following resources:
 
-- [Coinbase CDP](https://portal.cdp.coinbase.com/access/api) - Coinbase Developer Portal.
-- [Platform APIs Documentation](https://docs.cdp.coinbase.com/coinbase-sdk/docs/quickstart) - Coinbase SDK Documentation.
+To learn more about the CDP SDK, take a look at the following resources:
+
+- [Coinbase Developer Platform](https://portal.cdp.coinbase.com/access/api)
+- [CDP API Documentation](https://docs.cdp.coinbase.com/cdp-sdk/docs/quickstart) - CDP SDK documentation.
 
 ## Deploy on Vercel
 
-The easiest way to deploy this app is to use Vercel. Click the button below to deploy your own copy of the AI Feedback tool:
+If you are accessing this template from GitHub, you can click the button below to deploy your own copy of the AI Feedback tool:
 
 <p align="center">
-  <a href="https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fcoinbase%2Fcoinbase-sdk-ai-agent-sample&env=PRIVATE_KEY,NAME&envDescription=PRIVATE_KEY%20and%20NAME%20are%20the%20API%20key%20and%20name%20of%20the%20key%20you%20download%20from%20Coinbase%20Developer%20Platform%20portal.&envLink=https%3A%2F%2Fdocs.cdp.coinbase.com%2Fdeveloper-platform%2Fdocs%2Fcdp-keys&project-name=ai-wallet-coinbase-sdk&repository-name=ai-wallet-coinbase-sdk"><img src="https://vercel.com/button" alt="Deploy with Vercel"/></a>
+  <a href="https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fcoinbase%2Fcoinbase-sdk-ai-agent-sample&env=API_KEY_PRIVATE_KEY,API_KEY_NAME&envDescription=API_KEY_PRIVATE_KEY%20and%20API_KEY_NAME%20are%20the%20API%20private%20key%20and%20name%20of%20the%20key%20you%20download%20from%20Coinbase%20Developer%20Platform%20portal.&envLink=https%3A%2F%2Fdocs.cdp.coinbase.com%2Fdeveloper-platform%2Fdocs%2Fcdp-keys&project-name=ai-wallet-coinbase-sdk&repository-name=ai-wallet-coinbase-sdk"><img src="https://vercel.com/button" alt="Deploy with Vercel"/></a>
 </p>
 
 ## References
