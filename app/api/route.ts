@@ -1,5 +1,5 @@
 import { getRandomItems } from "@/utils/random";
-import { Coinbase, Wallet } from "@coinbase/coinbase-sdk";
+import { Coinbase, Transfer, Wallet } from "@coinbase/coinbase-sdk";
 
 export async function POST(request: Request) {
   const { API_KEY_NAME, API_KEY_PRIVATE_KEY, WALLET_DATA } = process.env;
@@ -64,11 +64,22 @@ export async function POST(request: Request) {
   }
 
   // Create a transfer to the destination address
-  const transfer = await userWallet?.createTransfer({
-    amount: 0.00000001,
-    assetId: "eth",
-    destination: body.address,
-  });
+  let transfer: Transfer
+  try {
+    transfer = await userWallet?.createTransfer({
+      amount: 0.00000001,
+      assetId: "eth",
+      destination: body.address,
+    });
+
+    await transfer.wait();
+  } catch (e) {
+    console.error(e);
+    return Response.json(
+      { message: "Failed to create transfer" },
+      { status: 500 }
+    );
+  }
 
   // Return the transaction hash and link
   return Response.json(
