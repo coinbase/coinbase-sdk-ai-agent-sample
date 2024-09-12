@@ -15,7 +15,7 @@ const BLOCKED_COUNTRIES = [
 ];
 
 export const config = {
-    matcher: ['/'],
+    matcher: ['/(.*)'],
 };
 
 export default function middleware(request: Request) {
@@ -28,9 +28,7 @@ export default function middleware(request: Request) {
         BLOCKED_COUNTRIES.includes(countryCode)
     ) {
         console.log(`Country ${countryCode} is blocked`)
-        return Response.json(
-            { message: "AI agent app not available in your country" },
-        );
+        return new Response('AI agent app not available in your country', { status: 403 });
     }
 
     return next();
