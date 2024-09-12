@@ -15,7 +15,7 @@ const BLOCKED_COUNTRIES = [
 ];
 
 export const config = {
-    matcher: ['/(.*)'],
+    matcher: ['/'],
 };
 
 export default function middleware(request: Request) {
