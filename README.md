@@ -3,7 +3,7 @@
 The Onchain Machine Learning template provides a simple app for Reinforcement Learning from Human Feedback
 using the [CDP SDK](https://docs.cdp.coinbase.com/cdp-sdk/docs/welcome).
 The application shows how to create an [MPC wallet](https://docs.cdp.coinbase.com/mpc-wallet/docs/welcome), fund the wallet,
-and Base Sepolia to a recipient who controls a [Coinbase Smart Wallet](https://www.smartwallet.dev/why).
+and send Base Sepolia to a recipient who controls a [Coinbase Smart Wallet](https://www.smartwallet.dev/why).
 
 <p align="center">
     <video src="https://github.com/user-attachments/assets/fd9969e9-b389-4552-bb0b-46d6e9586e71" width="352" height="720"></video>
